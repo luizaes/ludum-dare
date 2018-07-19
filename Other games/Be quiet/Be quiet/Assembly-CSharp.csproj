@@ -51,9 +51,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Audio.cs" />
+     <Compile Include="Assets\Scripts\BeginGame.cs" />
      <Compile Include="Assets\Scripts\EnemyFire.cs" />
      <Compile Include="Assets\Scripts\EnemyGhost.cs" />
      <Compile Include="Assets\Scripts\MoveTrail.cs" />
+     <Compile Include="Assets\Scripts\PanelBegin.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <None Include="Assets\Artworks\gothicvania patreon collection\ gothicvania patreon collection\public-license.txt" />
  <Reference Include="UnityEngine.CoreModule">
