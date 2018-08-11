@@ -1,6 +1,7 @@
 ﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
@@ -12,10 +13,13 @@ public class Player : MonoBehaviour {
 	private float jumpSpeed = 900f;
 	private bool isGrounded;
 	private bool jumping;
+	private int score;
+	public Text scoreText;
 
 	// Use this for initialization
 	void Start () {
 		isGrounded = true;
+		score = 0;
 	}
 	
 	// Update is called once per frame
@@ -44,6 +48,8 @@ public class Player : MonoBehaviour {
 			jumping = true;
 			anim.SetBool("Jump", true);
 		}
+
+		scoreText.text = "Score: " + score.ToString();
 	}
 
 	void FixedUpdate () {
@@ -54,9 +60,23 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D Other){
-         	if(Other.collider.gameObject.tag == "ground") {
-            	isGrounded = true;
-				anim.SetBool("Jump", false);
-         	}
-    	}	 
+     	if(Other.collider.gameObject.tag == "ground") {
+        	isGrounded = true;
+			anim.SetBool("Jump", false);
+     	} else if(Other.collider.gameObject.tag == "wall") {
+     		Debug.Log("GAME OVER");
+     	} else if(Other.collider.gameObject.tag == "end") {
+     		Debug.Log("LEVEL PASSED");
+     	} else if(Other.collider.gameObject.tag == "coin") {
+     		score += 10;
+     		Destroy(Other.gameObject, 0.1f);
+     	} else if(Other.collider.gameObject.tag == "enemy") {
+     		if(Other.collider.GetType() == typeof(BoxCollider2D)) {
+         		Debug.Log("GAME OVER");
+         	} else if(Other.collider.GetType() == typeof(CircleCollider2D)){
+         		score += 15;
+         		Destroy(Other.gameObject, 0.1f);
+     		}
+     	}
+    }	 
 }

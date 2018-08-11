@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Wall2 : MonoBehaviour {
 
+	public BoxCollider2D collider;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -14,4 +16,10 @@ public class Wall2 : MonoBehaviour {
     	//Compute position for next time
     	transform.position = transform.position + new Vector3(-1, 0, 0);
  	}
+
+ 	void OnCollisionEnter2D(Collision2D Other){
+     	if(Other.collider.gameObject.tag == "ground") {
+        	Physics2D.IgnoreCollision(Other.collider.gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+     	}
+    }
 }
