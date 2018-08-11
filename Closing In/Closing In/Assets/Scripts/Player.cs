@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour {
 	private bool jumping;
 	private int score;
 	public Text scoreText;
+	public Text gameOver;
 
 	// Use this for initialization
 	void Start () {
@@ -64,19 +66,26 @@ public class Player : MonoBehaviour {
         	isGrounded = true;
 			anim.SetBool("Jump", false);
      	} else if(Other.collider.gameObject.tag == "wall") {
-     		Debug.Log("GAME OVER");
+     		gameOver.gameObject.SetActive(true);
+         	Invoke("reload", 2.0f);
      	} else if(Other.collider.gameObject.tag == "end") {
-     		Debug.Log("LEVEL PASSED");
+     		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +2);
      	} else if(Other.collider.gameObject.tag == "coin") {
      		score += 10;
      		Destroy(Other.gameObject, 0.1f);
      	} else if(Other.collider.gameObject.tag == "enemy") {
      		if(Other.collider.GetType() == typeof(BoxCollider2D)) {
-         		Debug.Log("GAME OVER");
+         		gameOver.gameObject.SetActive(true);
+         		Invoke("reload", 2.0f);
          	} else if(Other.collider.GetType() == typeof(CircleCollider2D)){
          		score += 15;
          		Destroy(Other.gameObject, 0.1f);
      		}
      	}
     }	 
+
+    private void reload() {
+    	gameOver.gameObject.SetActive(false);
+    	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
