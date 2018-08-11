@@ -1,0 +1,8 @@
+*.sln
+*.meta
+*.csproj
+
+/Closing In/Closing In/Assets/Music
+/Closing In/Closing In/Assets/Fonts
+/Closing In/Closing In/Assets/Artwork
+/Closing In/Closing In/Assets/GUI
