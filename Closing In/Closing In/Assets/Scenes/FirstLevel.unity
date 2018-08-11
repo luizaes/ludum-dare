@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 370144869}
   m_Layer: 0
   m_Name: sp_82 (6)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 371982711}
   m_Layer: 0
   m_Name: sp_82 (1)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -369,6 +369,7 @@ GameObject:
   - component: {fileID: 372689240}
   - component: {fileID: 372689239}
   - component: {fileID: 372689238}
+  - component: {fileID: 372689243}
   m_Layer: 0
   m_Name: pa_196
   m_TagString: Untagged
@@ -495,6 +496,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &372689243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 372689237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 738e088b144194705af7df4a57a5017d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collider: {fileID: 372689239}
+  rb: {fileID: 372689238}
+  anim: {fileID: 372689240}
 --- !u!1 &456761995
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +522,7 @@ GameObject:
   - component: {fileID: 456761996}
   m_Layer: 0
   m_Name: sp_82 (2)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -605,7 +620,7 @@ GameObject:
   - component: {fileID: 533986822}
   m_Layer: 0
   m_Name: sp_82 (3)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -971,7 +986,7 @@ GameObject:
   - component: {fileID: 1079497923}
   m_Layer: 0
   m_Name: sp_82
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1142,6 +1157,7 @@ GameObject:
   - component: {fileID: 1222572711}
   - component: {fileID: 1222572710}
   - component: {fileID: 1222572709}
+  - component: {fileID: 1222572713}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1213,6 +1229,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1222572713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1222572708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f5ba65569fe4721a77625b15a66179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 372689242}
+  offset: {x: 0, y: 0, z: 0}
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
 --- !u!1 &1286076008
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,7 +1257,7 @@ GameObject:
   - component: {fileID: 1286076009}
   m_Layer: 0
   m_Name: sp_82 (7)
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
