@@ -9,9 +9,9 @@ public class Audio : MonoBehaviour {
     void Awake(){
          //if we don't have an [_instance] set yet
          if(!audio){
-             audio = this.gameObject.GetComponent<AudioSource>();
+            audio = this.gameObject.GetComponent<AudioSource>();
          } else {
-             Destroy(this.gameObject) ;
+            Destroy(this.gameObject) ;
          }
          DontDestroyOnLoad(this.gameObject) ;
      }
