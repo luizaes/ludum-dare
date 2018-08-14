@@ -9,7 +9,7 @@ public class Wall : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-	    InvokeRepeating("ChangePosition", 0, 5); //calls ChangePosition() every 2 secs
+	    InvokeRepeating("ChangePosition", 0, 7); //calls ChangePosition() every 7 secs
  	}
  
  	void ChangePosition () {
