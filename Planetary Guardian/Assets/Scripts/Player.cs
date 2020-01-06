@@ -9,15 +9,18 @@ public class Player : MonoBehaviour
     public GameObject planet;
     public GameObject asteroid;
     public GameObject emptyAsteroid;
+    public Animator asteroidAnim;
     private float radius = 4f;
     private float spawnRate = 5.0f;
     private float nextSpawn;
+    private int velocity;
     private int side;
 
     // Start is called before the first frame update
     void Start()
-    { 
+    {
         //InvokeRepeating("createAsteroid", 0.0f, 5.0f);
+        velocity = 1000;
     }
 
     // Update is called once per frame
@@ -59,6 +62,7 @@ public class Player : MonoBehaviour
             obj.transform.position = position;
             obj.transform.rotation = Quaternion.identity;
             obj.transform.SetParent(emptyAsteroid.transform);
+            obj.GetComponent<Asteroid>().velocity = velocity;
         }
         else if (side == 1)
         {
@@ -67,6 +71,7 @@ public class Player : MonoBehaviour
             obj.transform.position = position;
             obj.transform.rotation = Quaternion.identity;
             obj.transform.SetParent(emptyAsteroid.transform);
+            obj.GetComponent<Asteroid>().velocity = velocity;
         }
         else if (side == 2)
         {
@@ -75,6 +80,7 @@ public class Player : MonoBehaviour
             obj.transform.position = position;
             obj.transform.rotation = Quaternion.identity;
             obj.transform.SetParent(emptyAsteroid.transform);
+            obj.GetComponent<Asteroid>().velocity = velocity;
         }
         else
         {
@@ -83,7 +89,37 @@ public class Player : MonoBehaviour
             obj.transform.position = position;
             obj.transform.rotation = Quaternion.identity;
             obj.transform.SetParent(emptyAsteroid.transform);
+            obj.GetComponent<Asteroid>().velocity = velocity;
         }
         nextSpawn = Time.time + spawnRate;
+        if (velocity > 100)
+        {
+            velocity -= 50;
+            Debug.Log(velocity);
+        }
+        if(spawnRate > 1.0f)
+        {
+            spawnRate -= 0.1f;
+            Debug.Log(spawnRate);
+        }
     }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Asteroid")
+        {
+            //StartCoroutine(ExplodeAsteroid(collision));
+            Destroy(collision.gameObject);
+        }
+    }
+
+    //IEnumerator ExplodeAsteroid(Collision2D collision)
+    //{
+    //    asteroidAnim.SetTrigger("Explode");
+
+    //    //yield on a new YieldInstruction that waits for 5 seconds.
+    //    yield return new WaitForSeconds(5);
+
+    //    Destroy(collision.gameObject);
+    //}
 }

@@ -6,6 +6,7 @@ public class Asteroid : MonoBehaviour
 {
 
     public Transform trans;
+    public int velocity;
     private GameObject planet;
 
     // Start is called before the first frame update
@@ -19,6 +20,6 @@ public class Asteroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        trans.position = trans.position - (trans.position - planet.transform.position) / 1000;
+        trans.position -= (trans.position - planet.transform.position) / velocity;
     }
 }
