@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -10,22 +11,29 @@ public class Player : MonoBehaviour
     public GameObject asteroid;
     public GameObject emptyAsteroid;
     public Animator asteroidAnim;
+    public Text scoreText;
     private float radius = 4f;
     private float spawnRate = 5.0f;
     private float nextSpawn;
     private int velocity;
     private int side;
+    private int score;
 
     // Start is called before the first frame update
     void Start()
     {
         //InvokeRepeating("createAsteroid", 0.0f, 5.0f);
         velocity = 1000;
+        score = 0;
+        PlayerPrefs.SetInt("Score", score);
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        scoreText.text = score.ToString();
+        PlayerPrefs.SetInt("Score", score);
         // Move player acording to mouse position and radius 
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = planet.transform.position.z - Camera.main.transform.position.z;
@@ -110,6 +118,7 @@ public class Player : MonoBehaviour
         {
             //StartCoroutine(ExplodeAsteroid(collision));
             Destroy(collision.gameObject);
+            score += 1;
         }
     }
 
